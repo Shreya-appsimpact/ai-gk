@@ -11,18 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :answer %>
-    <%= form.text_area :answer %>
+    <%= form.text_area :answer, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}, selected: form.object.try(:category)), { include_blank: "Select Category" }, { class: "form-control js-example-basic-multiple", required: true } %>
+    <%= form.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}, selected: form.object.try(:category)), { include_blank: "Select Category" }, { class: "form-control mt-3", required: true } %>
   </div>
 
   <div class="actions">
