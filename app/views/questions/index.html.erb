@@ -20,17 +20,22 @@
           </div>
         </div>
       </div>
+      <div id= "loading-indicator" class="text-center">
+        <%= image_tag("loading.gif") %>
+      </div>
       <select id="load" class="mt-5 form-control ">
         <option value="10">Showing first 10</option>
         <option value="50">Show 50</option>
         <option value="100">Show 100</option>
         <option value="250">Show 250</option>
+        <!-- /<option value="1000">Show 1000</option> -->
         <option value="All">Show all</option>
       </select>
     </div>
     <div class="col-md-2"> 
     </div>
   </div>
+  
 </div>
 
 <script type="text/javascript">
@@ -44,4 +49,18 @@
       });
     });
   })
+   $(function($) {
+
+    $("#loading-indicator").hide();
+    $(document).ajaxStart(function(){
+      // Show image container
+      $("#loading-indicator").show();
+      $("#questions_index").hide();
+    });
+    $(document).ajaxComplete(function(){
+      // Hide image container
+      $("#loading-indicator").delay(2000).hide(0);
+      $("#questions_index").delay(2000).show(0);
+    });
+  });  
 </script>
