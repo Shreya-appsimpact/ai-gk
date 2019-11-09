@@ -5,17 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# categories = Category.create([
+#   { name: "History"},
+#   { name: "Politics"},
+#   { name: "Current Affairs"},
+#   { name: "Sports"},
+#   { name: "Economics"}
+# ])
+
 questions = Question.create([ 
   { title: "Who among the following introduced the subsidiary alliance system in India?",
-  answer: "Lord Wellesley"},
+  answer: "Lord Wellesley", category_id: 1},
   { title: "Who among the following signed the Treaty of Bassein in 1802 with the British East India Company ?",
-    answer: "Baji Rao II"},
+    answer: "Baji Rao II", category_id: 1},
   { title: "Which among the following was the first municipal corporation set up in India in the year 1687 ?",
-    answer: "Madras Municipal Corporation"},
+    answer: "Madras Municipal Corporation", category_id: 1},
   { title: "Which among the following events took place immediately before the massacre at Jallianwalla Bagh?",
-    answer: "Passage of the Rowlatt Act"},
+    answer: "Passage of the Rowlatt Act", category_id: 1},
   { title: "In 1953, under whose chairmanship was the first OBC Commission formed ?",
-    answer: "Kaka Kalelkar"},
+    answer: "Kaka Kalelkar", category_id: 1},
   { title: "Which among the following books was authored by Mahatma Gandhi?",
     answer: "Hind Swaraj"},
   { title: " In which year, first census was conducted in India ?",

@@ -1,7 +1,7 @@
 <div class="card shadow rounded-0">
   <div class="card-body">
-    <% questions.each do |question| %>
-    <h4 class="font-weight-bold font-16 text-primary"><%= question.title %></h4>
+    <% questions.each_with_index do |question, index| %>
+    <h4 class="font-weight-bold font-16 text-primary"><%= index + 1%>. <%= question.title %></h4>
     <p class="lead font-14"><%= question.answer %></p>
     <hr>
     <% end %>

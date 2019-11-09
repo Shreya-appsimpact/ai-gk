@@ -1,0 +1,10 @@
+
+<div class="card rounded-0">
+  <div class="card-body">
+    <% @category.questions.each do|question|%>            
+    <h4 class="font-weight-bold font-16 text-primary"><%= question.title %></h4>
+    <p class="lead font-14"><%= question.answer %></p>
+    <hr>
+    <% end %>
+  </div>
+</div>

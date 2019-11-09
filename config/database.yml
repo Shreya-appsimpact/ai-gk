@@ -5,7 +5,7 @@ development:
   username: postgres
   password: postgres
   pool: 5
-  database: ai_gk_development
+  database: ai_gk_dev
 
 production:
   host: localhost

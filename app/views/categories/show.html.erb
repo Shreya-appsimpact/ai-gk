@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <p>
+        <strong>Name:</strong>
+        <%= @category.name %>
+      </p>
+      <%= link_to 'Back', root_path, class: "btn btn-primary" %>      
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  <div class="row mt-5"> 
+    <div class="col-md-12">
+      <div class="row">
+        <%= render "questions/question_1" %>        
+      </div>
+    </div>
+  </div>     
+</div>
