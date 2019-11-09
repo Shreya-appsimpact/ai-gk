@@ -1,21 +1,28 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <p>
-        <strong>Name:</strong>
-        <%= @category.name %>
-      </p>
-      <%= link_to 'Back', root_path, class: "btn btn-primary" %>      
+  <div class="row mt-5 mb-5"> 
+    <div class="col-md-3">
+      <% @categories.each do |category| %>
+        <div class="list-group shadow">
+          <% if params[:id] == category.slug %>
+            <%= link_to category.name, category, class: "list-group-item list-group-item-action rounded-0 active" %>
+          <% else %>
+            <%= link_to category.name, category, class: "list-group-item list-group-item-action rounded-0" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <% if @category.questions.present? %>
+        <div id="questions_index">
+          <%= render "questions/question", questions: @category.questions %>
+        </div>
+      <% else %>
+        <div class="alert alert-primary">
+          <strong>No Question Available!</strong>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-2">
     </div>
   </div>
-
-  <div class="row mt-5"> 
-    <div class="col-md-12">
-      <div class="row">
-        <%= render "questions/question_1" %>        
-      </div>
-    </div>
-  </div>     
 </div>
