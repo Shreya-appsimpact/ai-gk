@@ -20,7 +20,10 @@ class QuestionsController < ApplicationController
   end
 
   def download_pdf
-    @questions = Question.order(created_at: :desc).limit(10)
+    @questions = Question.order(created_at: :desc).limit(10)  
+    html = render_to_string(:action => '../questions/download_pdf', :layout => false)
+    pdf = PDFKit.new(html)
+    send_data(pdf.to_pdf)                
   end  
 
   def show
