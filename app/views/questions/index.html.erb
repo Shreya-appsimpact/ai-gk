@@ -2,12 +2,12 @@
   <div class="row mt-5 mb-5">
     <div class="col-md-3">
       <% @categories.each do |category| %>
-        <div class="list-group shadow">
+        <div class="list-group shadow hide">
           <%= link_to category.name, category, class: "list-group-item list-group-item-action rounded-0" %>
         </div>
       <% end %>
-      <%= link_to 'New Question', new_question_path, class: "btn btn-primary mt-5" %> 
-      <%#= link_to 'download pdf', questions_path(format: 'pdf') %>
+      <%= link_to 'New Question', new_question_path, class: "btn btn-primary mt-5 hide" %> 
+      <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide", target: :_blank %>
     </div>
     <div class="col-md-7">
       <div id="questions_index">
@@ -21,11 +21,11 @@
           </div>
         </div>
       </div>
-      <div id= "loading-indicator" class="text-center">
+      <div id= "loading-indicator" class="text-center hide">
         <%= image_tag("loading.gif") %>
         <p>Loading Questions</p>
       </div>
-      <select id="load" class="mt-5 form-control ">
+      <select id="load" class="mt-5 form-control hide">
         <option value="10">Showing first 10</option>
         <option value="50">Show 50</option>
         <option value="100">Show 100</option>
@@ -33,7 +33,7 @@
         <option value="All">Show all</option>
       </select>
     </div>
-    <div class="col-md-2"> 
+    <div class="col-md-2 hide"> 
       <div class="row">
         <div class="col-12 mt-2">
           <%= image_tag "book1.jpg", class: "img-size" %>
@@ -86,7 +86,9 @@
     body {
       background-color: #FFF;
     }
-
+    .hide{
+      display: none;
+    }
     #container {
       width: auto;
       margin: 0;

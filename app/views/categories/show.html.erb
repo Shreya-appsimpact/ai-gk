@@ -10,6 +10,7 @@
           <% end %>
         </div>
       <% end %>
+      <%= link_to 'Download pdf', question_path(format: 'pdf'), class: "btn btn-success mt-5 hide", target: :_blank %>
     </div>
     <div class="col-md-7">
       <% if @category.questions.present? %>

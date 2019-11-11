@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:download_pdf]
 
   def index
     if params[:value].present? 
@@ -17,6 +18,10 @@ class QuestionsController < ApplicationController
     end  
     @categories = Category.all
   end
+
+  def download_pdf
+    @questions = Question.order(created_at: :desc).limit(10)
+  end  
 
   def show
     @question = @category.questions.find(params[:id])

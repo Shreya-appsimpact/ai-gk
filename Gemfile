@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery_with_bootstrap'
 gem 'friendly_id', '~> 5.2.4'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
+gem 'devise'
+
