@@ -19,12 +19,13 @@ class QuestionsController < ApplicationController
     @categories = Category.all
   end
 
-  def download_pdf
-    @questions = Question.order(created_at: :desc).limit(10)  
-    html = render_to_string(:action => '../questions/download_pdf', :layout => false)
-    pdf = PDFKit.new(html)
-    send_data(pdf.to_pdf)                
-  end  
+  # def download_pdf
+  #   params[:value] == "50"
+  #   @questions = Question.all  
+  #   html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+  #   pdf = PDFKit.new(html)
+  #   send_data(pdf.to_pdf)                
+  # end  
 
   def show
     @question = @category.questions.find(params[:id])
@@ -37,6 +38,7 @@ class QuestionsController < ApplicationController
   def edit;  end
   
   def create
+    byebug
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
@@ -75,6 +77,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit!
+      params.require(:question).permit(:title, :answer, :category_id)
     end
 end
