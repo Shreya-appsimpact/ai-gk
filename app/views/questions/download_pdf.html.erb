@@ -1,10 +1,12 @@
 <div class="card shadow rounded-0">
   <div id="questions_index">
     <div class="card-body">
+      <% if @questions.present? %>
       <% @questions.each_with_index do |question, index| %>
       <h4 class="font-weight-bold font-16 text-primary"><%= index + 1%>. <%= question.title %></h4>
       <p class="lead font-14"><%= question.answer %></p>
       <hr>
+      <% end %>
       <% end %>
     </div>    
   </div>
