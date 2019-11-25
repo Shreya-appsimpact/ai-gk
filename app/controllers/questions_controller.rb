@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
   # end  
 
   def show
-    @question = @category.questions.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def new
