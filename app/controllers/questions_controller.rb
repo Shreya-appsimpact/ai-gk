@@ -19,6 +19,11 @@ class QuestionsController < ApplicationController
     @categories = Category.all
   end
 
+  def import
+    Question.import(params[:file], params[:category_id])
+    redirect_to import_questions_path(@question), notice: "Question imported."
+  end
+
   # def download_pdf
   #   params[:value] == "50"
   #   @questions = Question.all  
