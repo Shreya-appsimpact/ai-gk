@@ -35,18 +35,20 @@
     </div>
     <div class="col-md-2 hide"> 
       <div class="row">
-        <div class="col-12 mt-2">
-          <%= image_tag "book1.jpg", class: "img-size" %>
-        </div>
-        <div class="col-12 mt-2">
-          <%= image_tag "book2.jpg", class: "img-size" %>
-        </div>
-        <div class="col-12 mt-2">
-          <%= image_tag "book3.jpg", class: "img-size" %>
-        </div>
-        <div class="col-12 mt-2">
-          <%= image_tag "book4.jpg", class: "img-size" %>
-        </div>        
+        <%= link_to 'http://www.amazon.com/', target: :_blank do %>
+          <div class="col-12 mt-2">
+            <%= image_tag "book1.jpg", class: "img-size" %>
+          </div>
+          <div class="col-12 mt-2">
+            <%= image_tag "book2.jpg", class: "img-size" %>
+          </div>
+          <div class="col-12 mt-2">
+            <%= image_tag "book3.jpg", class: "img-size" %>
+          </div>
+          <div class="col-12 mt-2">
+            <%= image_tag "book4.jpg", class: "img-size" %>
+          </div>        
+        <% end %>
       </div>
     </div>
   </div>
