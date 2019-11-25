@@ -38,7 +38,6 @@ class QuestionsController < ApplicationController
   def edit;  end
   
   def create
-    byebug
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
