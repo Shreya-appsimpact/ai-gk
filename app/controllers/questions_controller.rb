@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only:[:download_pdf]
+  before_action :authenticate_user!, only:[:download_pdf, :import]
 
   def index
     if params[:value].present? 
@@ -21,19 +21,17 @@ class QuestionsController < ApplicationController
 
   def import
     Question.import(params[:file], params[:category_id])
-    redirect_to import_questions_path(@question), notice: "Question imported."
+    redirect_to questions_path, notice: "Question imported."
   end
 
-  # def download_pdf
-  #   params[:value] == "50"
-  #   @questions = Question.all  
-  #   html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-  #   pdf = PDFKit.new(html)
-  #   send_data(pdf.to_pdf)                
-  # end  
+  def download_pdf
+    @questions = Question.all  
+    html = render_to_string(:action => '../questions/download_pdf', :layout => false)
+    pdf = PDFKit.new(html)
+    send_data(pdf.to_pdf)                
+  end  
 
   def show
-    @question = Question.find(params[:id])
   end
 
   def new
