@@ -9,6 +9,36 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:id])
     @categories = Category.all
   end
+  
+  def download_pdf_based_category
+    @category = Category.friendly.find(params[:id])
+    if params[:id] == "history"
+      @questions = @category.questions.all  
+      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+      pdf = PDFKit.new(html)
+      send_data(pdf.to_pdf)
+    elsif params[:id] == "politics"
+      @questions = @category.questions.all  
+      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+      pdf = PDFKit.new(html)
+      send_data(pdf.to_pdf)
+    elsif params[:id] == "current-affairs"  
+      @questions = @category.questions.all  
+      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+      pdf = PDFKit.new(html)
+      send_data(pdf.to_pdf)
+    elsif params[:id] == "sports"  
+      @questions = @category.questions.all  
+      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+      pdf = PDFKit.new(html)
+      send_data(pdf.to_pdf)
+    elsif params[:id] == "economics"  
+      @questions = @category.questions.all  
+      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+      pdf = PDFKit.new(html)
+      send_data(pdf.to_pdf)  
+    end     
+  end
 
   def new
     @category = Category.new

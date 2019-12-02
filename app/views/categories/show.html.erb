@@ -10,9 +10,9 @@
           <% end %>
         </div>
       <% end %>
-      <%= link_to 'Download pdf', question_path(format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
+        <%= link_to 'Download pdf', download_pdf_based_category_path(id: @category, format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
       <br>
-      <%= form_tag import_questions_path, multipart: true do %>
+      <%= form_tag import_questions_path, method: :post, multipart: true do %>
         <%= hidden_field_tag :category_id, nil, value: @category.id %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import", class: "btn btn-secondary btn-sm mt-2" %>
