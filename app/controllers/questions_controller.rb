@@ -20,8 +20,13 @@ class QuestionsController < ApplicationController
   end
 
   def import
-    Question.import(params[:file], params[:category_id])
-    redirect_to questions_path, notice: "Question imported."
+    @category = Category.find(params[:category_id])
+    if @category.name.downcase == params[:file].original_filename.downcase.split('.')[0]
+      Question.import(params[:file], params[:category_id])
+      redirect_to questions_path, notice: "Question imported."
+    else
+      redirect_to @category, notice: "Filename is wrong."
+    end    
   end
 
   def download_pdf
