@@ -1,43 +1,19 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :download_pdf_based_category]
 
   def index
     @categories = Category.all
   end
 
   def show
-    @category = Category.friendly.find(params[:id])
     @categories = Category.all
   end
   
   def download_pdf_based_category
-    @category = Category.friendly.find(params[:id])
-    if params[:id] == "history"
-      @questions = @category.questions.all  
-      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-      pdf = PDFKit.new(html)
-      send_data(pdf.to_pdf)
-    elsif params[:id] == "politics"
-      @questions = @category.questions.all  
-      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-      pdf = PDFKit.new(html)
-      send_data(pdf.to_pdf)
-    elsif params[:id] == "current-affairs"  
-      @questions = @category.questions.all  
-      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-      pdf = PDFKit.new(html)
-      send_data(pdf.to_pdf)
-    elsif params[:id] == "sports"  
-      @questions = @category.questions.all  
-      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-      pdf = PDFKit.new(html)
-      send_data(pdf.to_pdf)
-    elsif params[:id] == "economics"  
-      @questions = @category.questions.all  
-      html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
-      pdf = PDFKit.new(html)
-      send_data(pdf.to_pdf)  
-    end     
+    @questions = @category.questions.all  
+    html = render_to_string(:action => '../questions/download_pdf', :layout => false, disposition: "inline")
+    pdf = PDFKit.new(html)
+    send_data(pdf.to_pdf)
   end
 
   def new

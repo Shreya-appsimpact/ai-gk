@@ -1,4 +1,4 @@
-<%= form_for question, html: {id: 'question_form'}  do |form| %>
+<%= form_for question, html: { id: 'question_form' }  do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-group">
-    <%= form.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}, selected: form.object.try(:category)), { include_blank: "Select Category" }, { class: "form-control mt-3", required: true } %>
+    <%= form.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}, selected: form.object.category_id), { include_blank: "Select Category" }, { class: "form-control mt-3", required: true } %>
   </div>
 
   <div class="actions">
@@ -33,6 +33,5 @@
 <style type="text/css">
   .error{
     color: red;
-    shadow
   }
 </style>
