@@ -11,15 +11,7 @@
     </div>
     <div class="col-md-7">
       <div id="questions_index">
-        <div class="card shadow rounded-0">
-          <div class="card-body">
-            <% @questions.each_with_index do |question, index| %>
-            <h4 class="font-weight-bold font-16 text-primary"><%= index + 1 %>. <%= question.title %></h4>
-            <p class="lead font-14"><%= question.answer %></p>
-            <hr>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'question' %>
       </div>
       <div id= "loading-indicator" class="text-center hide">
         <%= image_tag("loading.gif") %>
@@ -71,9 +63,6 @@
         data: {value: count}
       });
     });
-  })
-   $(function($) {
-
     $("#loading-indicator").hide();
     $(document).ajaxStart(function(){
       // Show image container
@@ -85,5 +74,5 @@
       $("#loading-indicator").delay(2000).hide(0);
       $("#questions_index").delay(2000).show(0);
     });
-  });  
+  });
 </script>
