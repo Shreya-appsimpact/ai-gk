@@ -36,8 +36,7 @@ class QuestionsController < ApplicationController
     send_data(pdf.to_pdf)                
   end  
 
-  def show
-  end
+  def show;  end
 
   def new
     @question = Question.new

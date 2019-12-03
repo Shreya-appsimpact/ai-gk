@@ -12,7 +12,4 @@ class Question < ApplicationRecord
       Question.create! row.to_hash
     end
   end  
-
 end
-
- 
