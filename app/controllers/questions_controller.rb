@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only:[:download_pdf, :import]
+  skip_before_action :verify_authenticity_token
 
   def index
     if params[:value].present? 
@@ -21,11 +22,22 @@ class QuestionsController < ApplicationController
 
   def import
     @category = Category.find(params[:category_id])
-    if @category.name.downcase == params[:file].original_filename.downcase.split('.')[0]
-      Question.import(params[:file], params[:category_id])
-      redirect_to questions_path, notice: "Question imported."
+    if params[:file].present?
+      if @category.name.downcase == params[:file].original_filename.downcase.split('.')[0]
+        question = Question.import(params[:file], params[:category_id])
+        unless question
+          flash[:notice] = "Please check question. Question should be unique"
+          redirect_to @category 
+        else
+          flash[:notice] = "error"
+          redirect_to @category    
+        end
+        @questions = Question.import(params[:file], params[:category_id]) 
+      else      
+        redirect_to @category, notice: "Filename is wrong."
+      end
     else
-      redirect_to @category, notice: "Filename is wrong."
+      redirect_to @category, notice: "Filename is not present."   
     end    
   end
 
