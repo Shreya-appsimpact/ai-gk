@@ -6,6 +6,19 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    if params[:value].present? 
+      respond_to do |format|
+        if params[:value] == "All"
+          @questions = @category.questions.order(created_at: :desc)
+          format.js
+        else
+          @questions = @category.questions.order(created_at: :desc).limit(params[:value].to_i)
+          format.js
+        end
+      end
+    else
+      @questions = @category.questions.order(created_at: :desc).limit(10)
+    end  
     @categories = Category.all
   end
   
