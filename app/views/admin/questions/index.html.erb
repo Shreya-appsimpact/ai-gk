@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-3">
+      <% @categories.each do |category| %>
+        <div class="list-group shadow hide">
+          <%= link_to category.name, admin_category_path(category), class: "list-group-item list-group-item-action rounded-0" %>
+        </div>
+      <% end %>
+      <%= link_to 'New Question', new_admin_question_path, class: "btn btn-primary mt-5 hide" %> 
+      <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide", target: :_blank %>
+    </div>
+    <div class="col-md-7">
+      <div id="questions_index">
+        <%= render 'question' %>
+      </div>
+      <div id= "loading-indicator" class="text-center hide">
+        <%= image_tag("loading.gif") %>
+        <p>Loading Questions</p>
+      </div>
+      <select id="load" class="mt-5 form-control hide">
+        <option value="10">Showing first 10</option>
+        <option value="50">Show 50</option>
+        <option value="100">Show 100</option>
+        <option value="250">Show 250</option>
+        <option value="All">Show all</option>
+      </select>
+    </div>
+    <div class="col-md-2 hide d-none d-sm-block d-sm-none d-md-block"> 
+      <div class="row">
+        <%= link_to 'https://www.amazon.com/
+          Egyptian-Book-Dead-Integrated-Full-Color/dp/1452144389/ref=sr_1_1?key
+          words=egyptian+magic+books&qid=1574663618&sr=8-1', target: :_blank do %>
+          <div class="col-12 mt-2">
+            <%= image_tag "book1.jpg", class: "img-size" %>
+          </div>
+        <% end %>
+        <%= link_to 'https://www.amazon.com/
+          Mughal-Empire-Cambridge-History-India/dp/0521566037/ref=mp_s_a_1_7?keywords=mugal+books&qid=1574664129&sr=8-7', target: :_blank do %>
+          <div class="col-12 mt-2">
+            <%= image_tag "book2.jpg", class: "img-size" %>
+          </div>
+        <% end %>
+        <%= link_to 'https://www.amazon.com/
+          Witch-Hunt-Greatest-Delusion-Political/dp/0062960091/ref=sr_1_2?keywords=political+books+best+sellers&qid=1574664304&sprefix=politica&sr=8-2', target: :_blank do %>
+          <div class="col-12 mt-2">
+            <%= image_tag "book3.jpg", class: "img-size" %>
+          </div>
+        <% end %>
+        <%= link_to 'https://www.amazon.com/Maharana-Pratap-Rima-Hooja/dp/93862
+          28963/ref=sr_1_1?keywords=maharana+pratap&qid=1574664502&sr=8-1', target: :_blank do %>
+          <div class="col-12 mt-2">
+            <%= image_tag "book4.jpg", class: "img-size" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function($) {
+    $("#load").on('change', function() {
+      var count = $('select#load :selected').val();
+       $.ajax({
+        url: "/questions", 
+        type: "GET", 
+        data: {value: count}
+      });
+    });
+    $("#loading-indicator").hide();
+    $(document).ajaxStart(function(){
+      // Show image container
+      $("#loading-indicator").show();
+      $("#questions_index").hide();
+    });
+    $(document).ajaxComplete(function(){
+      // Hide image container
+      $("#loading-indicator").delay(2000).hide(0);
+      $("#questions_index").delay(2000).show(0);
+    });
+  });
+</script>
