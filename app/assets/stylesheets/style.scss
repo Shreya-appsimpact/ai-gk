@@ -37,5 +37,15 @@ body {
   
   #pdf_link {
     display: none;
+
   }
+}
+.error{
+  color: #e42626;
+}
+
+@media (max-width: 575px) {
+  .font-16{
+    font-size: 12px !important;
+  }  
 }
