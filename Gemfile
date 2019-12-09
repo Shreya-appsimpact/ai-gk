@@ -66,4 +66,4 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
 gem 'devise'
-
+gem 'font-awesome-rails'
