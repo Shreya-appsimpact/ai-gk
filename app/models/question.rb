@@ -7,7 +7,7 @@ class Question < ApplicationRecord
   validates :title, :answer, uniqueness: true
 
   def self.import(file, category)
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file.path, headers: :first_row) do |row|
       row["category_id"] = category
       question = Question.new(row.to_hash) 
       return false unless question.valid?

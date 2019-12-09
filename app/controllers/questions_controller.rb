@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
           flash[:notice] = "Please check question. Question should be unique"
           redirect_to @category 
         else
-          flash[:notice] = "error"
+          flash[:notice] = "Question are imported"
           redirect_to @category    
         end
         @questions = Question.import(params[:file], params[:category_id]) 
