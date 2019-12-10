@@ -6,8 +6,8 @@
           <%= link_to category.name, admin_category_path(category), class: "list-group-item list-group-item-action rounded-0" %>
         </div>
       <% end %>
-      <%= link_to 'New Question', new_admin_question_path, class: "btn btn-primary mt-5 hide" %> 
-      <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide", target: :_blank %>
+      <%= link_to 'New Question', new_admin_question_path, class: "btn btn-primary mt-5 hide mb-3" %> 
+      <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
     </div>
     <div class="col-md-7">
       <div id="questions_index">

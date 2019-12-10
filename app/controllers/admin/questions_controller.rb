@@ -23,20 +23,20 @@ class Admin::QuestionsController < AdminController
     @category = Category.find(params[:category_id])
     if params[:file].present?
       if @category.name.downcase == params[:file].original_filename.downcase.split('.')[0]
-        question = Question.import(params[:file], params[:category_id])
+        question = question_import
         unless question
           flash[:notice] = "Please check question. Question should be unique"
-          redirect_to admin_category_apth(@category) 
+          redirect_to admin_category_path(@category) 
         else
           flash[:notice] = "Question are imported"
-          redirect_to @category    
+          redirect_to admin_category_path(@category)
         end
-        @questions = Question.import(params[:file], params[:category_id]) 
+        @questions = question_import
       else      
-        redirect_to admin_category_apth(@category), notice: "Filename is wrong."
+        redirect_to admin_category_path(@category), notice: "Filename is wrong."
       end
     else
-      redirect_to admin_category_apth(@category), notice: "Filename is not present."   
+      redirect_to admin_category_path(@category), notice: "Filename is not present."   
     end    
   end
 
@@ -79,7 +79,11 @@ class Admin::QuestionsController < AdminController
       end
     end
   end
-
+  
+  def question_import
+    Question.import(params[:file], params[:category_id]) 
+  end
+   
   def destroy
     @question.destroy
     respond_to do |format|
