@@ -7,15 +7,15 @@ class QuestionsController < ApplicationController
     if params[:value].present? 
       respond_to do |format|
         if params[:value] == "All"
-          @questions = Question.order(created_at: :desc)
+          @questions = question_order
           format.js
         else
-          @questions = Question.order(created_at: :desc).limit(params[:value].to_i)
+          @questions = question_order.limit(params[:value].to_i)
           format.js
         end
       end
     else
-      @questions = Question.order(created_at: :desc).limit(10)
+      @questions = question_order.limit(10)
     end  
     @categories = Category.all
   end
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     @category = Category.find(params[:category_id])
     if params[:file].present?
       if @category.name.downcase == params[:file].original_filename.downcase.split('.')[0]
-        question = Question.import(params[:file], params[:category_id])
+        question = question_import
         unless question
           flash[:notice] = "Please check question. Question should be unique"
           redirect_to @category 
@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
           flash[:notice] = "Question are imported"
           redirect_to @category    
         end
-        @questions = Question.import(params[:file], params[:category_id]) 
+        @questions = question_import 
       else      
         redirect_to @category, notice: "Filename is wrong."
       end
@@ -67,6 +67,14 @@ class QuestionsController < ApplicationController
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def question_order
+    Question.order(created_at: :desc)
+  end
+
+  def question_import
+    Question.import(params[:file], params[:category_id]) 
   end
 
   def update

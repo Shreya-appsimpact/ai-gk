@@ -9,15 +9,15 @@ class Admin::CategoriesController < AdminController
     if params[:value].present? 
       respond_to do |format|
         if params[:value] == "All"
-          @questions = @category.questions.order(created_at: :desc)
+          @questions = category_order
           format.js
         else
-          @questions = @category.questions.order(created_at: :desc).limit(params[:value].to_i)
+          @questions = category_order.limit(params[:value].to_i)
           format.js
         end
       end
     else
-      @questions = @category.questions.order(created_at: :desc).limit(10)
+      @questions = category_order.limit(10)
     end  
     @categories = Category.all
   end
@@ -67,6 +67,10 @@ class Admin::CategoriesController < AdminController
       format.json { head :no_content }
     end
   end
+  
+  def category_order
+    @category.questions.order(created_at: :desc)
+  end 
 
   private
     def set_category
