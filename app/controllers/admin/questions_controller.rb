@@ -26,17 +26,17 @@ class Admin::QuestionsController < AdminController
         question = Question.import(params[:file], params[:category_id])
         unless question
           flash[:notice] = "Please check question. Question should be unique"
-          redirect_to @category 
+          redirect_to admin_category_apth(@category) 
         else
           flash[:notice] = "Question are imported"
           redirect_to @category    
         end
         @questions = Question.import(params[:file], params[:category_id]) 
       else      
-        redirect_to @category, notice: "Filename is wrong."
+        redirect_to admin_category_apth(@category), notice: "Filename is wrong."
       end
     else
-      redirect_to @category, notice: "Filename is not present."   
+      redirect_to admin_category_apth(@category), notice: "Filename is not present."   
     end    
   end
 
@@ -59,7 +59,7 @@ class Admin::QuestionsController < AdminController
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to admin_question_path(@question), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -71,7 +71,7 @@ class Admin::QuestionsController < AdminController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to admin_question_path(@question), notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit }
@@ -83,7 +83,7 @@ class Admin::QuestionsController < AdminController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to admin_questions_path, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
