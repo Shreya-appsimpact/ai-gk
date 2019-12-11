@@ -11,7 +11,7 @@
           <% end %>
         </div>
       <% end %>
-        <%= link_to 'Download pdf', download_pdf_based_category_path(id: @category, format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
+      <%= link_to 'Download pdf', download_pdf_based_category_path(id: @category, format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
       <br>
     </div>
     <div class="col-md-7">
@@ -37,40 +37,40 @@
       <% end %>
     </div>
     <div class="col-md-2 hide d-none d-sm-block d-sm-none d-md-block"> 
-      <% if params[:id] == "history" %>
-        <div class="row">
+      <div class="row">
+        <% if params[:id] == "history" %>
           <%= link_to 'https://www.amazon.com/Egyptian-Book-Dead-Integrated-Full-Color/dp/1452144389/ref=sr_1_1?keywords=egyptian+magic+books&qid=1574663618&sr=8-1', target: :_blank do %>
             <div class="col-12 mt-2">
               <%= image_tag "book1.jpg", class: "img-size" %>
             </div>
           <% end %>
-      <% elsif params[:id] == "politics" %>
-        <%= link_to 'https://www.amazon.in/Why-Killed-Gandhi-Nathuram-Godse-ebook/dp/B07W8T59PD?ref_=Oct_BSellerC_1318182031_1&pf_rd_p=013f936a-5d9c-5434-b1cc-f54148e2eb8a&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=1318182031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=N5BHC69W076CKMF0BFEX&pf_rd_r=N5BHC69W076CKMF0BFEX&pf_rd_p=013f936a-5d9c-5434-b1cc-f54148e2eb8a', target: :_blank do %>
-          <div class="col-12 mt-2">
-            <%= image_tag "gandhi.jpg", class: "img-size" %>
-          </div>
-        <% end %>
-      <% elsif params[:id] == "current-affairs" %>   
-        <%= link_to 'https://www.amazon.in/Current-Affairs-2020-Assam-India/dp/B07SQTXVZH/ref=sr_1_2?qid=1575356144&refinements=p_27%3ACurrent+Affairs&s=books&sr=1-2', target: :_blank do %>
-          <div class="col-12 mt-2">
-            <%= image_tag "gk.jpg", class: "img-size" %>
-          </div>
-        <% end %>
-      <% elsif params[:id] == "sports" %>  
-        <%= link_to 'https://www.amazon.in/Surya-Namaskar-Satyananda-Saraswati/
-          dp/8185787352?ref_=Oct_BSellerC_1318244031_0&pf_rd_p=827e7144-bfb0-567a-963a-5e69300fc3c3&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=1318244031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=W0GZ667XVPH4X3P930V3&pf_rd_r=W0GZ667XVPH4X3P930V3&pf_rd_p=827e7144-bfb0-567a-963a-5e69300fc3c3', target: :_blank do %>
-          <div class="col-12 mt-2">
-            <%= image_tag "sports.jpg", class: "img-size" %>
-          </div>
-        <% end %>
-      <% elsif params[:id] == "economics" %>  
-        <%= link_to 'https://www.amazon.in/
-          Coffee-Can-Investing-Stupendous-Wealth/dp/067009045X?ref_=Oct_BSellerC_4149434031_1&pf_rd_p=bc8ba1ad-c65c-59bb-96e9-f85c1de0a5de&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=4149434031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=0BW75NRVTCPZK9CYA48M&pf_rd_r=0BW75NRVTCPZK9CYA48M&pf_rd_p=bc8ba1ad-c65c-59bb-96e9-f85c1de0a5de', target: :_blank do %>
-          <div class="col-12 mt-2">
-            <%= image_tag "economics.jpg", class: "img-size" %>
-          </div>
-        <% end %>
-      <% end %>  
+        <% elsif params[:id] == "politics" %>
+          <%= link_to 'https://www.amazon.in/Why-Killed-Gandhi-Nathuram-Godse-ebook/dp/B07W8T59PD?ref_=Oct_BSellerC_1318182031_1&pf_rd_p=013f936a-5d9c-5434-b1cc-f54148e2eb8a&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=1318182031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=N5BHC69W076CKMF0BFEX&pf_rd_r=N5BHC69W076CKMF0BFEX&pf_rd_p=013f936a-5d9c-5434-b1cc-f54148e2eb8a', target: :_blank do %>
+            <div class="col-12 mt-2">
+              <%= image_tag "gandhi.jpg", class: "img-size" %>
+            </div>
+          <% end %>
+        <% elsif params[:id] == "current-affairs" %>   
+          <%= link_to 'https://www.amazon.in/Current-Affairs-2020-Assam-India/dp/B07SQTXVZH/ref=sr_1_2?qid=1575356144&refinements=p_27%3ACurrent+Affairs&s=books&sr=1-2', target: :_blank do %>
+            <div class="col-12 mt-2">
+              <%= image_tag "gk.jpg", class: "img-size" %>
+            </div>
+          <% end %>
+        <% elsif params[:id] == "sports" %>  
+          <%= link_to 'https://www.amazon.in/Surya-Namaskar-Satyananda-Saraswati/
+            dp/8185787352?ref_=Oct_BSellerC_1318244031_0&pf_rd_p=827e7144-bfb0-567a-963a-5e69300fc3c3&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=1318244031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=W0GZ667XVPH4X3P930V3&pf_rd_r=W0GZ667XVPH4X3P930V3&pf_rd_p=827e7144-bfb0-567a-963a-5e69300fc3c3', target: :_blank do %>
+            <div class="col-12 mt-2">
+              <%= image_tag "sports.jpg", class: "img-size" %>
+            </div>
+          <% end %>
+        <% elsif params[:id] == "economics" %>  
+          <%= link_to 'https://www.amazon.in/
+            Coffee-Can-Investing-Stupendous-Wealth/dp/067009045X?ref_=Oct_BSellerC_4149434031_1&pf_rd_p=bc8ba1ad-c65c-59bb-96e9-f85c1de0a5de&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=4149434031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=0BW75NRVTCPZK9CYA48M&pf_rd_r=0BW75NRVTCPZK9CYA48M&pf_rd_p=bc8ba1ad-c65c-59bb-96e9-f85c1de0a5de', target: :_blank do %>
+            <div class="col-12 mt-2">
+              <%= image_tag "economics.jpg", class: "img-size" %>
+            </div>
+          <% end %>
+        <% end %>  
       </div>
     </div>
   </div>

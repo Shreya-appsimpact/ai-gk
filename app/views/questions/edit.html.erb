@@ -4,11 +4,10 @@
     <div class="card-header">
       <h1>Editing Question</h1>
     </div>  
-      <div class="card-body">
-        <%= render 'form', question: @question %>
-        <%= link_to 'Show', @question, class: "btn btn-primary mt-3" %> 
-        <%= link_to 'Back', questions_path, class: "btn btn-success mt-3" %> 
-      </div>     
-    </div>
+    <div class="card-body">
+      <%= render 'form', question: @question %>
+      <%= link_to 'Show', @question, class: "btn btn-primary mt-3" %> 
+      <%= link_to 'Back', questions_path, class: "btn btn-success mt-3" %> 
+    </div>     
   </div>
 </div>
