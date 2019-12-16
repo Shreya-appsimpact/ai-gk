@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'questions#index'
-
+  get '/news' => "questions#news"
+  get '/download_pdf' => "questions#download_pdf"
   resources :questions do
     collection do
       post :import
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     resources :categories
     get '/load_more_questions' => "questions#load_more_questions" 
     get '/download_pdf' => "questions#download_pdf"
+    get '/news' => "questions#news"
     get '/download_pdf_based_category' => "categories#download_pdf_based_category"
     resources :questions do
       collection do
