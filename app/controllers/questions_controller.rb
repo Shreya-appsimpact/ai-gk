@@ -41,6 +41,8 @@ class QuestionsController < ApplicationController
     end    
   end
 
+  def news;  end
+
   def download_pdf
     @questions = Question.all  
     html = render_to_string(:action => '../questions/download_pdf', :layout => false)
