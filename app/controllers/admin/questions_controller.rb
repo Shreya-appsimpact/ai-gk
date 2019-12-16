@@ -1,5 +1,6 @@
 class Admin::QuestionsController < AdminController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:import]
   skip_before_action :verify_authenticity_token
 
   def index
