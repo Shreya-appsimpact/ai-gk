@@ -2,8 +2,7 @@ class Admin::VideosController < AdminController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   def index
-    @video = Video.all
-    @categories = Category.all
+    @videos = Video.all
   end
 
   def show;  end
