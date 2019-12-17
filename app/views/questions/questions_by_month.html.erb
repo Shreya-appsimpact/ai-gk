@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="card mt-4 mb-4">
+    <div class="card-body">
+      <% @questions.each_with_index do |questions, index|%>   
+        <div class="media">
+          <div class="media-body ml-md-3 mt-2 mt-lg-0">
+            <div class="row">
+              <div class="col text-muted">
+                <%= link_to questions_path(questions), class: "media-para"  do %>
+                <small>
+                  <i class="fa fa-calendar"></i>
+                  <abbr class="published ml-2" itemprop="datePublished">
+                    <i><%= questions.created_at.strftime("%b %d %Y") %></i> 
+                    <i class="fa fa-hashtag ml-3 mr-1"></i>
+                    <%= link_to category_path(questions.category), class: "text-dark" do %>
+                    <%= questions.category.name%>
+                    <% end %>
+                  </abbr>
+                </small>
+                <% end %>  
+              </div>  
+            </div>  
+            <h2 class="post-title">
+              <%= link_to questions_path(questions)  do %>
+              <%= index + 1 %>.
+              <%= questions.title %>
+              <% end %>
+            </h2>
+            <small class="text-muted media-body-para">
+              <%= link_to questions_path(questions)  do %>
+              <%= raw questions.answer.truncate(300)%>
+              <% end %>
+            </small>
+            <div class="mt-3">
+              <%= link_to questions_path(questions) , class: "read-more-btn pt-2 pb-2 pl-3 pr-3" do %>Read more
+              <i class="fa fa-angle-double-right ml-2"></i>
+              <% end %>
+            </div>  
+          </div>
+        </div>
+        <hr class="mt-4 mb-4">
+      <% end %>       
+    </div>
+  </div>
+</div>
