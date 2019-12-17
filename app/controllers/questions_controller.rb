@@ -18,8 +18,24 @@ class QuestionsController < ApplicationController
       @questions = question_order.limit(10)
     end  
     @categories = Category.all
+    @questions_by_month = question_month
+  end
+  
+  def questions_by_month
+    @questions = Question.all
+    @questions_by_month = question_month
+    if params[:month]
+      date = Date.parse("1 #{params[:month]}")  # to get the first day of the month
+      @questions = @questions.where(:created_at => date..date.end_of_month)  # get posts for the month
+    else
+      @questions = Question.all
+    end
   end
 
+  def question_month
+    Question.all.map { |questions| [Date::MONTHNAMES[questions.created_at.month], questions.created_at.year].join(' ') }.each_with_object(Hash.new(0)) { |month_year, counts| counts[month_year] += 1 }
+  end 
+    
   def import
     @category = Category.find(params[:category_id])
     if params[:file].present?

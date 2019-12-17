@@ -6,6 +6,21 @@
           <%= link_to category.name, category, class: "list-group-item list-group-item-action rounded-0" %>
         </div>
       <% end %>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <p>Monthly Questions</p>
+          <% @questions_by_month.each do |m, p| %>
+          <li class="archivedate">
+          <%= link_to m, questions_by_month_path(:month => m)%>
+          (<%= p %>)
+          </li>
+          <% end %>
+        </div>
+        <div class="card-body">
+          
+        </div>
+      </div>
       <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
     </div>
     <div class="col-md-7">
