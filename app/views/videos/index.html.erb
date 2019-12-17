@@ -1,0 +1,22 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col-md-4 mt-4">
+        <%= link_to video_path(video) do %>
+          <%= embed video.video_url %>
+          <p class="text-secondary custom">
+            <%= video.title.truncate(50) %>
+          </p>
+        <% end %>
+        <div class="badge badge-primary">
+          <%= video.category.name %>
+        </div>  
+      </div>
+    <% end %>   
+  </div>
+</div>  
+<style type="text/css">
+  .custom:hover{
+    text-decoration: none !important;
+  }
+</style>

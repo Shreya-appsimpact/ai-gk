@@ -1,0 +1,28 @@
+<div class="col-lg-8 col-md-12 blog-main mt-4 mb-2">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h3 class="post-title">
+         <%= @video.title %>
+      </h3> 
+      <small class="text-muted media-para ">
+       <abbr class="published" itemprop="datePublished" title="2018-08-11T10:46:00+05:30"><i><%= @video.created_at.strftime("%d %b %Y") %></i> 
+      </small>
+      <div class="mt-4 show-video">
+        <% if @video.video_url.present? %>
+        <%= embed @video.video_url %>
+        <% else %>
+        <%= image_tag "dummy.jpg" %>  
+        <% end %>
+      </div>
+      <div class="show-description-text mt-4">
+        <%= @video.description.html_safe%>
+      </div>
+    </div>  
+  </div> 
+</div><!-- /.blog-main -->
+<style type="text/css">
+  .show-video iframe{
+    width: 100%;
+    height: 400px;
+  }
+</style>

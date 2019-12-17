@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <%= render 'partials/flash'%>
+      <h1>Editing Video</h1>
+    </div>
+    <div class="card-body">
+      <%= render 'form', video: @video %>
+      <%= link_to 'Back', admin_videos_path %>
+    </div>
+  </div>
+</div>
