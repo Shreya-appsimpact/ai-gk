@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     collection do
       post :import
     end
-  end 
+  end
+  resources :videos, only: [:index, :show] 
 
   resources :categories
-  get '/load_more_questions' => "questions#load_more_questions" 
+  get '/questions_by_month' => "questions#questions_by_month"
   get '/download_pdf' => "questions#download_pdf"
   get '/download_pdf_based_category' => "categories#download_pdf_based_category"
   namespace :admin do
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
         post :import
       end
     end
+    resources :videos
   end  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
