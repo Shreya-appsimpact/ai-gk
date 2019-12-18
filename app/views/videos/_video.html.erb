@@ -1,0 +1,16 @@
+<%= link_to "Back To videos", videos_path, class: "btn btn-primary btn-sm mb-4"%>
+<div class="card shadow rounded-0">
+  <div class="card-body" id="videos">
+    <% @videos.each do |video| %>
+      <div class="col-md-4 mt-4">
+        <%= embed video.video_url %>
+        <p class="text-secondary custom">
+          <%= video.title.truncate(50) %>
+        </p>
+        <div class="badge badge-primary">
+          <%= video.category.name  %>
+        </div>  
+      </div>
+    <% end %>   
+  </div>
+</div>

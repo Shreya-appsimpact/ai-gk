@@ -1,17 +1,20 @@
 <div class="container mt-5 mb-5">
-  <div class="row">
+  <div class="row hide">
     <% @videos.each do |video| %>
       <div class="col-md-4 mt-4">
         <%= link_to video_path(video) do %>
           <%= embed video.video_url %>
           <p class="text-secondary custom">
-            <%= video.title.truncate(50) %>
+            <%= video.title %>
           </p>
         <% end %>
         <div class="badge badge-primary">
-          <%= video.category.name %>
+          <%= link_to video.category.name, category_id: video.category_id, remote: true %>
         </div>  
       </div>
-    <% end %>   
+    <% end %>
+  </div>
+  <div id="videos">
   </div>
 </div>  
+
