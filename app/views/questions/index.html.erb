@@ -12,13 +12,10 @@
           <p>Monthly Questions</p>
           <% @questions_by_month.each do |m, p| %>
           <li class="archivedate">
-          <%= link_to m, questions_by_month_path(:month => m)%>
-          (<%= p %>)
+            <%= link_to m, questions_by_month_path(:month => m)%>
+            (<%= p %>)
           </li>
           <% end %>
-        </div>
-        <div class="card-body">
-          
         </div>
       </div>
       <%= link_to 'Download pdf', download_pdf_path(format: 'pdf'), class: "btn btn-success mt-5 hide mb-3", target: :_blank %>
