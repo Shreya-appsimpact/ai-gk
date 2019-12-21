@@ -1,20 +1,24 @@
 <div class="container mt-5 mb-5">
-  <div class="row hide">
-    <% @videos.each do |video| %>
-      <div class="col-md-4 mt-4">
-        <%= link_to video_path(video) do %>
-          <%= embed video.video_url %>
-          <p class="text-secondary custom">
-            <%= video.title %>
-          </p>
+  <div class="card">
+    <div class="card-body">
+      <div class="row hide">
+        <% @videos.each do |video| %>
+          <div class="col-md-4 mt-4">
+            <%= link_to video_path(video) do %>
+              <%= embed video.video_url %>
+              <p class="text-secondary custom">
+                <%= video.title %>
+              </p>
+            <% end %>
+            <div class="badge badge-primary">
+              <%= link_to video.category.name, category_id: video.category_id, remote: true %>
+            </div>  
+          </div>
         <% end %>
-        <div class="badge badge-primary">
-          <%= link_to video.category.name, category_id: video.category_id, remote: true %>
-        </div>  
       </div>
-    <% end %>
-  </div>
-  <div id="videos">
+      <div id="videos">
+      </div>      
+    </div>
   </div>
 </div>  
 
