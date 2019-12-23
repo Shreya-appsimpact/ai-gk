@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_blogs/blog'
   devise_for :users
   root 'questions#index'
   get '/news' => "questions#news"
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :categories
   get '/questions_by_month' => "questions#questions_by_month"
   get '/download_pdf' => "questions#download_pdf"
+  get '/blog' => "static_blogs#blog"
   get '/download_pdf_based_category' => "categories#download_pdf_based_category"
   namespace :admin do
     resources :categories
