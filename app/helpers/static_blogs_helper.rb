@@ -1,0 +1,2 @@
+module StaticBlogsHelper
+end
