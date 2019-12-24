@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/questions_by_month' => "questions#questions_by_month"
   get '/download_pdf' => "questions#download_pdf"
   get '/blog' => "static_blogs#blog"
+  get '/subject_category' => "static_blogs#subject_category"
+  get '/book' => "static_blogs#book"
   get '/download_pdf_based_category' => "categories#download_pdf_based_category"
   namespace :admin do
     resources :categories
